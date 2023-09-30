@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Summarization</title>
+    <!-- Include Bootstrap CSS for improved styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        body {
+            background-image: url('');
+            background-size: cover;
+        }
+
+        /* styles.css */
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; /* Set your header background color */
+    padding: 10px 20px;
+    color: #fff; /* Set your text color */
+}
+
+.site-header .logo img {
+    max-width: 50px; /* Set the maximum logo width */
+    height: auto;
+    margin-right: 10px;
+}
+
+.site-header .site-name h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.site-header .about-us a {
+    text-decoration: none;
+    color: #fff; /* Set link color */
+    font-weight: bold;
+    transition: color 0.3s; /* Add a color transition effect */
+}
+
+.site-header .about-us a:hover {
+    color: #ff6600; /* Set the hover color */
+}
+
+
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        /* Header Styles */
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Form Styles */
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            display: none; /* Hide the file input */
+        }
+
+        .custom-file-upload {
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"] {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* Columns Styles */
+        .column {
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .column h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .column p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        /* Clear Button Styles */
+        #clear-file-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #f44336; /* Red color for "Clear" button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* Selected File Label Styles */
+        #selected-file-label {
+            
+            font-size: 16px;
+            color: #666;
+            margin-top: 20px;
+        }
+        .block__title {
+            font-size: 24px;
+            color: #333;
+            margin-top: 40px;
+        }
+        
+        .column .column__img-wrap {
+            text-align: center;
+        }
+        
+        .column .column__image {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+        
+        .column-heading {
+            font-size: 20px;
+            color: #333;
+            margin-top: 20px;
+        }
+        
+        .kb-article-styles p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #666;
+        }
+        /* Add a transition effect for the glow-up effect */
+    .column {
+        transition: all 0.3s ease; /* Add a transition for size and box shadow */
+    }
+
+    /* Glow-up effect and size increase on hover */
+    .column:hover {
+        transform: translateY(-5px) scale(1.02); /* Move up and increase size slightly */
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Add a stronger box shadow */
+    }
+
+    .mission-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #E8F2FC;
+; /* Set your desired background color */
+        padding: 20px;
+    }
+    
+    .mission-text {
+        flex: 1;
+        padding: 20px;
+        text-align: left;
+    }
+    
+    .mission-text h2 {
+        font-size: 24px;
+        color: #333; /* Set your desired text color */
+    }
+    
+    .mission-text p {
+        font-size: 18px;
+        color: #666; /* Set your desired text color */
+    }
+    
+    .mission-image {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .mission-image img {
+        max-width: 90%;
+        height: auto;
+        border-radius: 10px; /* Add a border radius for a rounded image */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    }
+    /*why we need summarizer*/
+
+    .your-section {
+        margin:20px;
+        box-sizing: inherit;
+        display: block;
+        padding: 60px 0;
+        border-radius: 0;
+        text-align: left;
+        background-color: #E8F2FC;
+        color: #202F66;
+        padding-top: 60px;
+        padding-bottom: 60px;
+
+    }
+    
+
+
+    /*about us*/
+
+    /* Styles for the section */
+        .u-section-1 {
+            margin:20px;
+            font-family: 'Open Sans', sans-serif;
+            box-sizing: border-box;
+            position: relative;
+            object-fit: cover;
+            display: block;
+            vertical-align: middle;
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            color: #111111;
+            background-position: 50% 50%;
+            min-height: 491px;
+            overflow: visible;
+            background: linear-gradient(to bottom, #ccc, #fff);
+
+
+            
+        }
+
+        /* Animation keyframes */
+        @keyframes customAnimationIn {
+            from {
+                opacity: 0;
+                transform: translate(0, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+        }
+
+        /* Styles for text and button */
+        .u-container-layout-1 {
+            padding: 20px;            
+        }
+
+        .u-text-1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .u-btn-1 {
+            margin-top:50px;
+            background-color: transparent;
+            border: 2px solid #000;
+            border-radius: 50px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .u-btn-1:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /*footer*/
+
+        footer {
+            background-color: #333; /* Background color */
+            color: #fff; /* Text color */
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex; /* Use flexbox to align content in one row */
+            flex-wrap: wrap; /* Allow content to wrap to the next line if needed */
+            justify-content: center; /* Horizontally center content */
+        }
+
+        .footer-content p {
+            margin: 5px 20px; /* Add some margin between items */
+        }
+
+        /* Style for the LinkedIn link */
+        .footer-content a {
+            color: #0077B5; /* LinkedIn blue color */
+            text-decoration: none;
+        }
+
+        /* Style for the LinkedIn link on hover */
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+     
+    <!--header-->
+
+    <header class="site-header">
+        <div class="logo">
+            <img src="https://scalebranding.com/wp-content/uploads/2021/05/Robot-Logo-1.jpg" alt="Website Logo">
+        </div>
+        <div class="site-name">
+            <h1 style="color:white;text-align: none;">Sum-Up</h1> <!-- Replace with your website name -->
+        </div>
+        <div class="about-us">
+            <a href="#aboutus">About Us</a>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <h1>Document Summarization</h1>
+        <!-- Display the selected file name and Clear button -->
+        <label id="selected-file-label">No file selected</label>
+        <button type="button" id="clear-file-button">Clear</button>
+
+        <form method="POST" enctype="multipart/form-data" id="upload-form">
+            <label class="custom-file-upload">Choose File<input type="file" name="file" accept=".pdf" id="file-input"></label>
+            <input type="submit" value="Summarize">
+        </form>
+
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Display PDF here if available -->
+                {% if pdf_display %}
+                    {{ pdf_display | safe }}
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <!-- Display summary here if available -->
+                {% if summary %}
+                    <div class="column">
+                        <h2>Summary</h2>
+                        <p>{{ summary }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+           <!-- mission  -->
+
+    <div class="mission-section">
+        <div class="mission-image">
+            <img src="https://www.lexalytics.com/wp-content/uploads/2022/05/Group-97.png" alt="Mission Image">
+        </div>
+        <div class="mission-text">
+            <h2>Our Mission</h2>
+            <p>Our Text Summarizer is on a mission to make your life easier. Imagine effortlessly transforming lengthy documents into concise, informative gems. With our tool, you can swiftly extract the essence of any text, saving you valuable time while ensuring you never miss the main points. Say goodbye to information overload and hello to instant comprehension. Let us help you unlock the power of summarization!</p>
+        </div>
+    </div>
+    
+            <!-- icons -->
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <h2 class="block__title none">
+                    Make your life easier with the Doc summarizer tool
+                </h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-3 column">
+                <div class="row justify-content-center">
+                    <div class="column__img-wrap col-md-4 col-lg-12">
+                        <img width="297" height="253" src="https://www.scribbr.com/wp-content/uploads/2023/03/icon-studium.webp" class="column__image img-fluid entered lazyloaded" alt="Academic research" data-lazy-src="https://www.scribbr.com/wp-content/uploads/2023/03/icon-studium.webp" data-ll-status="loaded">
+                    </div>
+                    <div class="column__text-wrap col-md-8 col-lg-12">
+                        <h4 class="column-heading">Academic research</h4>
+                        <div class="kb-article-styles">
+                            <p>Speed up your academic research by extracting key points.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 column">
+                <div class="row justify-content-center">
+                    <div class="column__img-wrap col-md-4 col-lg-12">
+                        <img width="297" height="253" src="https://www.scribbr.com/wp-content/uploads/2023/03/icon-alltag.webp" class="column__image img-fluid entered lazyloaded" alt="Everyday use" data-lazy-src="https://www.scribbr.com/wp-content/uploads/2023/03/icon-alltag.webp" data-ll-status="loaded">
+                    </div>
+                    <div class="column__text-wrap col-md-8 col-lg-12">
+                        <h4 class="column-heading">Every day use</h4>
+                        <div class="kb-article-styles">
+                            <p>Reduce your reading time by summarizing long blocks of text within seconds.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 column">
+                <div class="row justify-content-center">
+                    <div class="column__img-wrap col-md-4 col-lg-12">
+                        <img width="397" height="353" src="https://www.scribbr.com/wp-content/uploads/2023/03/icon-job.webp" class="column__image img-fluid entered lazyloaded" alt="job" data-lazy-src="https://www.scribbr.com/wp-content/uploads/2023/03/icon-job.webp" data-ll-status="loaded">
+                    </div>
+                    <div class="column__text-wrap col-md-8 col-lg-12">
+                        <h4 class="column-heading">Business</h4>
+                        <div class="kb-article-styles">
+                            <p><span style="font-weight: 400;">Easily condense transcripts of long meetings into concise bullet points.</span></p>
+                        </div>
+                    </div>
+                </div>
+        
+                
+            </div>
+            <div class="col-lg-3 column">
+                <div class="row justify-content-center">
+                    <div class="column__img-wrap col-md-4 col-lg-12">
+                        <img width="397" height="353" src="https://www.scribbr.com/wp-content/uploads/2023/03/icon-schule.webp" class="column__image img-fluid entered lazyloaded" alt="school" data-lazy-src="https://www.scribbr.com/wp-content/uploads/2023/03/icon-schule.webp" data-ll-status="loaded">
+                    </div>
+                    <div class="column__text-wrap col-md-8 col-lg-12">
+                        <h4 class="column-heading">Difficult text</h4>
+                        <div class="kb-article-styles">
+                            <p>Simplify hard-to-read paragraphs, sentences, or complete articles with 1 click.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    
+
+
+        <div class="clearfix"></div>
+    </div>
+
+        <!-- Why use this summarizer -->
+
+    <section class="your-section">
+        <!-- Content within the styled section -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 image-col col-md-4 text-center  order-md-2">
+                    <img src="https://www.ilovepdf.com/storage/blog/226-1684403944-How-to-summarize-and-extract-text-from-PDF-with-AI-.png" data-lazy-srcset="https://www.ilovepdf.com/storage/blog/226-1684403944-How-to-summarize-and-extract-text-from-PDF-with-AI-.png 758w, https://www.ilovepdf.com/storage/blog/226-1684403944-How-to-summarize-and-extract-text-from-PDF-with-AI-.png 300w" class="img-fluid entered lazyloaded" alt="Text summarizer" width="758" height="567" data-lazy-src="https://www.ilovepdf.com/storage/blog/226-1684403944-How-to-summarize-and-extract-text-from-PDF-with-AI-.png" data-ll-status="loaded" srcset="https://www.ilovepdf.com/storage/blog/226-1684403944-How-to-summarize-and-extract-text-from-PDF-with-AI-.png 758w, https://www.ilovepdf.com/storage/blog/226-1684403944-How-to-summarize-and-extract-text-from-PDF-with-AI-.png 300w"><noscript><img src="https://www.ilovepdf.com/storage/blog/226-1684403944-How-to-summarize-and-extract-text-from-PDF-with-AI-.png" srcset="https://www.ilovepdf.com/storage/blog/226-1684403944-How-to-summarize-and-extract-text-from-PDF-with-AI-.png 758w, https://www.ilovepdf.com/storage/blog/226-1684403944-How-to-summarize-and-extract-text-from-PDF-with-AI-.png 300w"  class="img-fluid" alt="Text summarizer" width="758" height="567" ></noscript>
+                </div>
+                <div class="col-lg-6 text-col col-md-8 order-md-1">
+                    <h2 class="mb-4 text-left">
+                        Why use this summarizer?
+                    </h2>
+                    <div class="kb-article-styles">
+                        <ul class="checklist">
+                            <li><strong>Completely Free:</strong>Generate endless summaries without any cost.</li>
+                            <li><strong>Precision Guaranteed:</strong>Receive a dependable and error-free summary of your original text.</li>
+                            <li><strong>No Registration Required:</strong>Utilize it without the need for personal information.</li>
+                            <li><strong>Ensured Security:</strong>Your privacy is safeguarded with no storage of summary data.</span></li>
+                            <li><strong>Swift Results:</strong> Obtain an accurate summary in mere seconds, all thanks to AI.</span></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- about us -->
+
+
+    <section class="u-align-center u-clearfix u-image u-valign-bottom-xl u-valign-middle-lg u-section-1" id="aboutus">
+        <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
+            <div class="u-layout">
+                <div class="u-layout-row">
+                    <div class="u-align-left u-container-align-center u-container-style u-layout-cell u-size-19-xl u-size-22-lg u-size-60-md u-size-60-sm u-size-60-xs u-layout-cell-1 animated customAnimationIn-played" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="0">
+                        <img src="https://cdn.leverageedu.com/blog/wp-content/uploads/2020/05/13204533/Teamwork.png"  width-"350px" height="350px" class="u-active-none u-border-1 u-border-active-palette-2-base u-border-grey-75 u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-button-link u-button-style u-hover-none u-none u-radius-0 u-text-body-color u-top-left-radius-0 u-top-right-radius-0 u-btn-1" target="_blank"></img>
+
+                        <div class="u-container-layout u-valign-middle u-container-layout-1">
+                            <h2 class="u-align-center u-text u-text-1">About Us</h2>
+                            <p>Welcome to Sum-Up, your go-to destination for effortless text summarization. Our mission is to make your life easier by providing a powerful, free summarization tool that simplifies complex text and saves you valuable time.
+
+                                At Sum-Up, we're committed to delivering accurate and reliable summaries of your content without the need for any sign-up or personal data. Your privacy is our priority, and we never store your summarized data.
+                                
+                                Our summarization tool leverages cutting-edge AI technology to provide lightning-fast, trustworthy results. Whether you're a student, researcher, professional, or simply someone looking to save time, Sum-up is here to help.
+                                
+                                Explore our tool today and experience the convenience of instant, hassle-free text summarization. Join our growing community of satisfied users and discover a smarter way to consume content."</p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="u-align-left u-container-style u-image u-layout-cell u-size-38-lg u-size-41-xl u-size-60-md u-size-60-sm u-size-60-xs u-image-1 animated customAnimationIn-played" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="250" data-image-width="1337" data-image-height="1000">
+                        <div class="u-container-layout u-container-layout-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>Designed and developed by Khanak Gupta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</p>
+            <p>Location: Delhi NCR&nbsp;&nbsp;&nbsp;&nbsp;|</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/khanak-gupta-386239254/" target="_blank">Khanak-Gupta</a></p>
+        </div>
+    </footer>
+    
+
+    <!-- Include Bootstrap JS for improved styling -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Function to update the selected file name
+        function updateSelectedFileName() {
+            const fileInput = document.getElementById("file-input");
+            const selectedFileLabel = document.getElementById("selected-file-label");
+
+            if (fileInput.files.length > 0) {
+                const fileName = fileInput.files[0].name;
+                selectedFileLabel.textContent = `Selected file: ${fileName}`;
+            } else {
+                selectedFileLabel.textContent = "No file selected";
+            }
+        }
+
+        // Attach event listeners to file input and Clear button
+        document.getElementById("file-input").addEventListener("change", function () {
+            updateSelectedFileName();
+        });
+
+        document.getElementById("clear-file-button").addEventListener("click", function () {
+            const fileInput = document.getElementById("file-input");
+            fileInput.value = ""; // Clear the selected file
+            updateSelectedFileName(); // Update the displayed file name
+        });
+    </script>
+</body>
+</html>
